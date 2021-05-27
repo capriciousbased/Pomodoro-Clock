@@ -1,12 +1,52 @@
 import "./App.css";
+import React, { useState } from "react";
 import Break from "./components/Break";
 import Session from "./components/Session";
 
 function App() {
+  const [breakLength, setBreakLength] = useState(300);
+  const [sessionLength, setSessionLength] = useState(1500);
+
+  const decrementBreak = () => {
+    const newBreakLength = breakLength - 60;
+
+    if (newBreakLength < 0) {
+      setBreakLength(0);
+    } else {
+      setBreakLength(newBreakLength);
+    }
+  };
+
+  const incrementBreak = () => {
+    setBreakLength(breakLength + 60);
+  };
+
+  const decrementSession = () => {
+    const newSessionLength = sessionLength - 60;
+
+    if (newSessionLength < 0) {
+      setSessionLength(0);
+    } else {
+      setBreakLength(newSessionLength);
+    }
+  };
+
+  const incrementSession = () => {
+    setSessionLength(sessionLength + 60);
+  };
+
   return (
     <div className="App">
-      <Break />
-      <Session />
+      <Break
+        breakLength={breakLength}
+        decrementBreak={decrementBreak}
+        incrementBreak={incrementBreak}
+      />
+      <Session
+        breakLength={breakLength}
+        decrementSession={decrementSession}
+        incrementSession={incrementSession}
+      />
     </div>
   );
 }
