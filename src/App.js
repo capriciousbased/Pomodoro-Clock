@@ -5,7 +5,7 @@ import Session from "./components/Session";
 
 function App() {
   const [breakLength, setBreakLength] = useState(300);
-  const [sessionLength, setSessionLength] = useState(1500);
+  const [sessionLength, setSessionLength] = useState(60 * 25);
 
   const decrementBreak = () => {
     const newBreakLength = breakLength - 60;
@@ -27,7 +27,7 @@ function App() {
     if (newSessionLength < 0) {
       setSessionLength(0);
     } else {
-      setBreakLength(newSessionLength);
+      setSessionLength(newSessionLength);
     }
   };
 
@@ -43,7 +43,7 @@ function App() {
         incrementBreak={incrementBreak}
       />
       <Session
-        breakLength={breakLength}
+        sessionLength={sessionLength}
         decrementSession={decrementSession}
         incrementSession={incrementSession}
       />

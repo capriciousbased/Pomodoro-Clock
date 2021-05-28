@@ -1,6 +1,6 @@
 import moment from "moment";
 
-const Break = ({ sessionLength, decrementSession, incrementSession }) => {
+const Session = ({ sessionLength, decrementSession, incrementSession }) => {
   const sessionLengthInMinutes = moment.duration(sessionLength, "s").minutes();
   return (
     <div>
@@ -16,4 +16,4 @@ const Break = ({ sessionLength, decrementSession, incrementSession }) => {
   );
 };
 
-export default Break;
+export default Session;
